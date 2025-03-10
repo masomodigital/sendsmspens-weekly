@@ -10,6 +10,9 @@
             text-align: center;
             margin: 50px;
         }
+        h2 {
+            color: red;
+        }
         form {
             display: inline-block;
             text-align: left;
@@ -29,7 +32,7 @@
             border-radius: 4px;
         }
         textarea {
-            height: 75px; /* Adjust height if needed */
+            height: 150px; /* Adjusted for 10 lines */
         }
         button {
             background-color: #28a745;
@@ -53,7 +56,7 @@
         <input type="hidden" name="email" value="admin@sherton.website">
 
         <label for="message">Message (Max 145 chars):</label>
-        <textarea id="message" name="message" maxlength="145" rows="6" required></textarea>
+        <textarea id="message" name="message" maxlength="145" rows="10" required></textarea>
 
         <label for="userId">User ID / PIN:</label>
         <input type="text" id="userId" name="userId" required>
