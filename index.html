@@ -86,6 +86,14 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById("responseMessage").innerText = data;
+
+                // Reset the form
+                document.getElementById("smsForm").reset();
+
+                // Clear message after 3 seconds
+                setTimeout(() => {
+                    document.getElementById("responseMessage").innerText = "";
+                }, 3000);
             })
             .catch(error => {
                 document.getElementById("responseMessage").innerText = "Error sending SMS.";
