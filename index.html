@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send SMS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Send SMS</h2>
+    <form id="smsForm">
+        <!-- Hidden Email Field -->
+        <input type="hidden" name="email" value="admin@sherton.website">
+
+        <label for="message">Message (Max 145 chars):</label>
+        <textarea id="message" name="message" maxlength="145" required></textarea>
+
+        <label for="userId">User ID / PIN:</label>
+        <input type="text" id="userId" name="userId" required>
+
+        <label for="phoneNumber">Recipient Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+
+        <label for="senderPhone">Your Phone Number:</label>
+        <input type="text" id="senderPhone" name="senderPhone" required>
+
+        <button type="submit">Send SMS</button>
+    </form>
+
+    <p id="responseMessage"></p>
+
+    <script>
+        document.getElementById("smsForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            // Convert form data to URL-encoded string
+            var params = new URLSearchParams();
+            for (var pair of formData.entries()) {
+                params.append(pair[0], pair[1]);
+            }
+
+            var scriptURL = "https://script.google.com/macros/s/AKfycbwqUYij2z-FII9xNU0YVK9Gbd9dy9czhU52UyR6Ro0saqF_0t6Yohml-BrRmUaLpIubig/exec";
+
+            fetch(scriptURL, {
+                method: "POST",
+                body: params
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("responseMessage").innerText = data;
+            })
+            .catch(error => {
+                document.getElementById("responseMessage").innerText = "Error sending SMS.";
+            });
+        });
+    </script>
+
+</body>
+</html>
