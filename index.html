@@ -28,6 +28,9 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+        textarea {
+            height: 75px; /* Adjust height if needed */
+        }
         button {
             background-color: #28a745;
             color: white;
@@ -44,13 +47,13 @@
 </head>
 <body>
 
-    <h2>Send SMS</h2>
+    <h2>Send SMS - Weekly Plan</h2>
     <form id="smsForm">
         <!-- Hidden Email Field -->
         <input type="hidden" name="email" value="admin@sherton.website">
 
         <label for="message">Message (Max 145 chars):</label>
-        <textarea id="message" name="message" maxlength="145" required></textarea>
+        <textarea id="message" name="message" maxlength="145" rows="6" required></textarea>
 
         <label for="userId">User ID / PIN:</label>
         <input type="text" id="userId" name="userId" required>
