@@ -32,7 +32,7 @@
             border-radius: 4px;
         }
         textarea {
-            height: 150px; /* Adjusted for 10 lines */
+            height: 150px;
         }
         button {
             background-color: #28a745;
@@ -61,17 +61,23 @@
         .black-button:hover {
             background-color: #333;
         }
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+        .success-message {
+            color: green;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
     <h2>Weekly Plan</h2>
 
-    <!-- Black Button for Checking Expiry Days -->
     <a href="https://masomodigital.github.io/eligibilitycheck/" class="black-button">CHECK DAYS TO MY EXPIRY</a>
 
     <form id="smsForm">
-        <!-- Hidden Email Field -->
         <input type="hidden" name="email" value="admin@sherton.website">
 
         <label for="message">Message (Max 147 chars):</label>
@@ -95,8 +101,12 @@
         document.getElementById("smsForm").addEventListener("submit", function(event) {
             event.preventDefault();
             var formData = new FormData(this);
-
-            // Convert form data to URL-encoded string
+            var responseMessage = document.getElementById("responseMessage");
+            
+            // Show processing message
+            responseMessage.innerText = "Wait. Sending SMS...";
+            responseMessage.className = ""; // Reset class
+            
             var params = new URLSearchParams();
             for (var pair of formData.entries()) {
                 params.append(pair[0], pair[1]);
@@ -110,18 +120,16 @@
             })
             .then(response => response.text())
             .then(data => {
-                document.getElementById("responseMessage").innerText = data;
-
-                // Reset the form
+                responseMessage.innerText = data;
+                responseMessage.className = data.toLowerCase().includes("error") ? "error-message" : "success-message";
                 document.getElementById("smsForm").reset();
-
-                // Clear message after 3 seconds
                 setTimeout(() => {
-                    document.getElementById("responseMessage").innerText = "";
+                    responseMessage.innerText = "";
                 }, 3000);
             })
             .catch(error => {
-                document.getElementById("responseMessage").innerText = "Error sending SMS.";
+                responseMessage.innerText = "Error sending SMS.";
+                responseMessage.className = "error-message";
             });
         });
     </script>
