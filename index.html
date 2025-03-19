@@ -32,7 +32,7 @@
             border-radius: 4px;
         }
         textarea {
-            height: 150px;
+            height: 90px; /* Adjusted for 6 lines */
         }
         button {
             background-color: #28a745;
@@ -61,6 +61,22 @@
         .black-button:hover {
             background-color: #333;
         }
+        .red-button {
+            background-color: red;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .red-button:hover {
+            background-color: darkred;
+        }
         .error-message {
             color: red;
             font-weight: bold;
@@ -76,12 +92,14 @@
     <h2>Weekly Plan</h2>
 
     <a href="https://masomodigital.github.io/eligibilitycheck/" class="black-button">CHECK DAYS TO MY EXPIRY</a>
+    <br>
+    <a href="https://masomodigital.github.io/smsbalance-weekly/" class="red-button">CHECK SMS BALANCE</a>
 
     <form id="smsForm">
         <input type="hidden" name="email" value="admin@sherton.website">
 
         <label for="message">Message (Put your first NAME at the END of SMS):</label>
-        <textarea id="message" name="message" maxlength="145" rows="10" required></textarea>
+        <textarea id="message" name="message" maxlength="145" rows="6" required></textarea>
 
         <label for="userId">User ID / PIN:</label>
         <input type="text" id="userId" name="userId" required>
