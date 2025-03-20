@@ -20,7 +20,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f9f9f9;
-            width: 300px; /* Match button width */
+            width: auto; /* Keep form width unchanged */
         }
         label {
             font-weight: bold;
@@ -33,7 +33,7 @@
             border-radius: 4px;
         }
         textarea {
-            height: 90px; /* Adjusted for 6 lines */
+            height: 90px;
         }
         button {
             background-color: #28a745;
@@ -43,22 +43,22 @@
             cursor: pointer;
             width: 100%;
             border-radius: 4px;
-            font-size: 14px; /* Match button text size */
+            font-size: 14px;
         }
         button:hover {
             background-color: #218838;
         }
         .black-button, .red-button {
-            width: 100%; /* Same width as Send SMS button */
-            display: block; /* Ensure each button is on a new line */
-            margin: 10px auto; /* Center align buttons */
+            width: 250px; /* Adjusted to match Send SMS button width */
+            display: block;
+            margin: 10px auto;
             padding: 10px 15px;
             border: none;
             cursor: pointer;
             border-radius: 4px;
             text-decoration: none;
             text-align: center;
-            font-size: 14px; /* Reduced font size to fit */
+            font-size: 14px; /* Reduced font size */
         }
         .black-button {
             background-color: black;
@@ -118,10 +118,9 @@
             var formData = new FormData(this);
             var responseMessage = document.getElementById("responseMessage");
             
-            // Show processing message
             responseMessage.innerText = "Wait. Sending SMS...";
-            responseMessage.className = ""; // Reset class
-            
+            responseMessage.className = "";
+
             var params = new URLSearchParams();
             for (var pair of formData.entries()) {
                 params.append(pair[0], pair[1]);
