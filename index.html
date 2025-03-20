@@ -46,18 +46,14 @@
         button:hover {
             background-color: #218838;
         }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
         .black-button, .red-button {
-            width: 200px; /* Ensuring both buttons are the same width */
+            width: 300px; /* Set same width for both buttons */
+            display: block; /* Ensure each button is on a new line */
+            margin: 10px auto; /* Center align buttons */
             padding: 10px 15px;
             border: none;
             cursor: pointer;
             border-radius: 4px;
-            display: inline-block;
             text-decoration: none;
             text-align: center;
             font-size: 16px;
@@ -72,7 +68,6 @@
         .red-button {
             background-color: red;
             color: white;
-            margin-top: 10px;
         }
         .red-button:hover {
             background-color: darkred;
@@ -91,10 +86,9 @@
 
     <h2>Weekly Plan</h2>
 
-    <div class="button-container">
-        <a href="https://masomodigital.github.io/eligibilitycheck/" class="black-button">CHECK DAYS TO MY EXPIRY</a>
-        <a href="https://masomodigital.github.io/smsbalance-weekly/" class="red-button">CHECK SMS BALANCE</a>
-    </div>
+    <a href="https://masomodigital.github.io/eligibilitycheck/" class="black-button">CHECK DAYS TO MY EXPIRY</a>
+    
+    <a href="https://masomodigital.github.io/smsbalance-weekly/" class="red-button">CHECK SMS BALANCE</a>
 
     <form id="smsForm">
         <input type="hidden" name="email" value="admin@sherton.website">
